@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Serie A Sponsor Banner</title>
+
+<style>
+:root{
+    --banner-height: 110px;
+    --logo-height: 52px;
+
+    /* velocità scrolling */
+    --scroll-duration: 22s;
+
+    /* stile premium */
+    --bg-1: #07111f;
+    --bg-2: #0c1c33;
+    --glow: rgba(0,180,255,.22);
+    --line: rgba(255,255,255,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   WRAPPER
+========================= */
+
+.sponsor-banner{
+    position:relative;
+    width:100%;
+    height:var(--banner-height);
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at center, rgba(0,140,255,.12), transparent 60%),
+        linear-gradient(90deg,var(--bg-1),var(--bg-2),var(--bg-1));
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,.03),
+        0 0 25px rgba(0,0,0,.45);
+
+    backdrop-filter: blur(10px);
+}
+
+/* glow laterale */
+.sponsor-banner::before,
+.sponsor-banner::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:120px;
+    height:100%;
+    z-index:5;
+    pointer-events:none;
+}
+
+.sponsor-banner::before{
+    left:0;
+    background:linear-gradient(to right, #050b14 0%, transparent 100%);
+}
+
+.sponsor-banner::after{
+    right:0;
+    background:linear-gradient(to left, #050b14 0%, transparent 100%);
+}
+
+/* =========================
+   TRACK
+========================= */
+
+.sponsor-track{
+    display:flex;
+    align-items:center;
+    gap:70px;
+
+    width:max-content;
+    height:100%;
+
+    animation:scrollSponsors var(--scroll-duration) linear infinite;
+}
+
+/* loop perfetto */
+@keyframes scrollSponsors{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================
+   ITEM
+========================= */
+
+.sponsor-item{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 8px;
+    flex-shrink:0;
+}
+
+.sponsor-item img{
+    height:var(--logo-height);
+    width:auto;
+    object-fit:contain;
+
+    opacity:.92;
+
+    filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.18))
+        drop-shadow(0 0 14px var(--glow));
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        filter .35s ease;
+}
+
+/* hover premium */
+.sponsor-item:hover img{
+    transform:scale(1.08);
+    opacity:1;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,255,255,.35))
+        drop-shadow(0 0 20px rgba(0,180,255,.45));
+}
+
+/* responsive */
+@media(max-width:768px){
+
+    :root{
+        --banner-height: 85px;
+        --logo-height: 38px;
+    }
+
+    .sponsor-track{
+        gap:42px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="sponsor-banner">
+
+    <div class="sponsor-track">
+
+        <!-- BLOCCO 1 -->
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo1.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo2.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo3.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo4.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo5.png" alt="">
+        </div>
+
+        <!-- DUPLICATO PER LOOP INFINITO -->
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo1.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo2.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo3.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo4.png" alt="">
+        </div>
+
+        <div class="sponsor-item">
+            <img src="https://raw.githubusercontent.com/TUO-USERNAME/logo5.png" alt="">
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
